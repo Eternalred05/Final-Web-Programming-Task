@@ -1,0 +1,81 @@
+<div class="report-view">
+
+    <header class="report-header">
+        <h1>Generar Informe</h1>
+        <button class="report-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <div class="informe-body">
+
+        <section class="report-filters report-filters-2">
+            <div class="filter">
+                <label for="informe-unidad">Unidad</label>
+                <select id="informe-unidad">
+                    <option value="">-- Seleccione --</option>
+                    <option selected>Emergencias Militares</option>
+                    <option>Primeros Auxilios</option>
+                    <option>UCI</option>
+                </select>
+            </div>
+
+            <div class="filter">
+                <label for="informe-turno">Turno</label>
+                <select id="informe-turno">
+                    <option value="">-- Seleccione --</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="informe-columns">
+
+            <div class="informe-col">
+
+                <div class="form-group">
+                    <label for="inf-ultimo">Atendidos desde el último informe</label>
+                    <input type="text" id="inf-ultimo" class="input-readonly" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="inf-altas">Altas</label>
+                    <input type="number" id="inf-altas" class="input-tiny" value="0" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="inf-admitidos">Admitidos</label>
+                    <input type="number" id="inf-admitidos" class="input-tiny" value="0" min="0">
+                </div>
+
+            </div>
+
+            <div class="informe-col">
+
+                <div class="form-group">
+                    <label for="inf-inicio">Pacientes al Inicio</label>
+                    <input type="text" id="inf-inicio" class="input-readonly" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="inf-turno">Atendidos en el Turno</label>
+                    <input type="text" id="inf-turno" class="input-readonly" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="inf-total">Total en el Registro</label>
+                    <input type="text" id="inf-total" class="input-readonly" readonly>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer class="report-footer report-footer-2b">
+        <button class="btn-primary" id="btnCalcular">Calcular Datos</button>
+        <button class="btn-primary" id="btnGenerarInforme">Generar Informe</button>
+    </footer>
+
+</div>

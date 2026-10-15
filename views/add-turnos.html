@@ -1,0 +1,48 @@
+<div class="form-view">
+
+    <header class="form-header">
+        <h1>Crear Turno</h1>
+        <button class="form-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <form class="form-body" id="formTurno">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="turno-unidad">Unidad</label>
+                <select id="turno-unidad" name="unidad" required>
+                    <option value="">-- Seleccione --</option>
+                    <option value="emer-mil">Emergencias Militares</option>
+                    <option value="primeros">Primeros Auxilios</option>
+                    <option value="uci">UCI</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="turno-medico">Médico Responsable</label>
+                <select id="turno-medico" name="medico" required>
+                    <option value="">-- Seleccione --</option>
+                    <option value="med-01">Dr. Alejandro Pérez</option>
+                    <option value="med-02">Dra. Marta Gómez</option>
+                    <option value="med-03">Dr. Luis Fernández</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="turno-numero">Número de Turno</label>
+            <input type="text" id="turno-numero" name="numero" class="input-short" required>
+        </div>
+
+        <div class="form-group">
+            <label for="turno-pacientes">Pacientes a Asignar</label>
+            <input type="number" id="turno-pacientes" name="pacientes" class="input-tiny" value="1" min="1" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,96 @@
+<div class="report-view">
+
+    <header class="report-header">
+        <h1>Resumen del Proceso</h1>
+        <button class="report-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <section class="report-filters">
+        <div class="filter">
+            <label for="filtro-hospital">Hospital</label>
+            <select id="filtro-hospital">
+                <option value="">-- Todos --</option>
+                <option>Hospital Militar</option>
+                <option>Hospital Central</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="filtro-departamento">Departamento</label>
+            <select id="filtro-departamento">
+                <option value="">-- Todos --</option>
+                <option>Emergencias Militares</option>
+                <option>Pediatría</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="filtro-unidad">Unidad</label>
+            <select id="filtro-unidad">
+                <option value="">-- Todas --</option>
+                <option>Emergencias Militares</option>
+                <option>UCI</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="filtro-turno">Turno</label>
+            <select id="filtro-turno">
+                <option value="">-- Todos los turnos --</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="report-table-wrapper">
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Hospital</th>
+                    <th>Depto</th>
+                    <th>Unidad</th>
+                    <th>Turno</th>
+                    <th>Hora inf.</th>
+                    <th>Pac. inicio</th>
+                    <th>Atendidos</th>
+                    <th>Total pac.</th>
+                    <th>% Atend.</th>
+                    <th>No atend.</th>
+                    <th>Altas</th>
+                    <th>Extranjero</th>
+                    <th>Fuera prov.</th>
+                    <th>Hosp. otra u.</th>
+                    <th>Otras causas</th>
+                    <th>Desconocida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hospital Milit...</td>
+                    <td>Emergencia...</td>
+                    <td>Emergencia...</td>
+                    <td>1</td>
+                    <td>Sin informe</td>
+                    <td>4</td>
+                    <td>0</td>
+                    <td>4</td>
+                    <td>0.0</td>
+                    <td>4</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="report-footer">
+        <button class="btn-primary" id="btnGenerarReporte">Generar Reporte</button>
+    </footer>
+
+</div>

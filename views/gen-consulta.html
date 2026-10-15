@@ -1,0 +1,55 @@
+<div class="report-view">
+
+    <header class="report-header">
+        <h1>Atender Paciente</h1>
+        <button class="report-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <div class="report-status">
+        <span id="atendidosInfo">Atendidos: 0 / 4</span>
+    </div>
+
+    <section class="report-filters report-filters-2">
+        <div class="filter">
+            <label for="atender-unidad">Unidad</label>
+            <select id="atender-unidad">
+                <option value="">-- Seleccione --</option>
+                <option selected>Emergencias Militares</option>
+                <option>Primeros Auxilios</option>
+                <option>UCI</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="atender-turno">Turno</label>
+            <select id="atender-turno">
+                <option value="">-- Seleccione --</option>
+                <option selected>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="report-table-wrapper">
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Hist. Clínica</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Fecha Nac.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se cargan al seleccionar unidad + turno -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="report-footer report-footer-2b">
+        <button class="btn-primary" id="btnAgregarCausa">Agregar Causa</button>
+        <button class="btn-primary" id="btnAtenderPaciente">Atender Paciente</button>
+    </footer>
+
+</div>

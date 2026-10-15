@@ -1,0 +1,55 @@
+<div class="form-view">
+
+    <header class="form-header">
+        <h1>Añadir Paciente al Sistema</h1>
+        <button class="form-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <form class="form-body" id="formPaciente">
+
+        <h2 class="form-title">Ingrese los Datos del Paciente</h2>
+
+        <div class="form-group">
+            <label for="pac-nombre">Nombre</label>
+            <input type="text" id="pac-nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pac-direccion">Dirección</label>
+            <input type="text" id="pac-direccion" name="direccion" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pac-historia">Número de Historia Clínica</label>
+            <input type="text" id="pac-historia" name="historia" class="input-short" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pac-fecha">Escoja la fecha de nacimiento del paciente</label>
+            <div class="input-with-button">
+                <input type="date" id="pac-fecha" name="fechaNacimiento" required>
+                <button type="button" class="btn-calendar" aria-label="Abrir calendario">
+                    <span class="calendar-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pac-unidad">
+                Seleccione a que Unidad se enviará
+            </label>
+            <select id="pac-unidad" name="unidad" required>
+                <option value="">-- Seleccione una unidad --</option>
+                <option value="miltuemer">Emergencias Militares -- MiltUEmer</option>
+                <option value="primeros">Primeros Auxilios</option>
+                <option value="uci">UCI</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Añadir</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,63 @@
+<div class="report-view">
+
+    <header class="report-header">
+        <h1>Resumen de Consultas Exitosas</h1>
+        <button class="report-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <section class="report-filters report-filters-3">
+        <div class="filter">
+            <label for="filtro-hospital">Hospital</label>
+            <select id="filtro-hospital">
+                <option value="">-- Todos los hospitales --</option>
+                <option>CIMEX</option>
+                <option>Hospital Militar</option>
+                <option>Clínico de 26</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="filtro-departamento">Departamento</label>
+            <select id="filtro-departamento">
+                <option value="">-- Todos --</option>
+                <option>Departamento de Oncología</option>
+                <option>Emergencias Militares</option>
+                <option>Dermatología</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="filtro-unidad">Unidad</label>
+            <select id="filtro-unidad">
+                <option value="">-- Todas --</option>
+                <option>Unidad de Emergencias</option>
+                <option>Primeros Auxilios</option>
+                <option>Infecciones en Piel</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="report-table-wrapper">
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Hospital</th>
+                    <th>Depto</th>
+                    <th>Unidad</th>
+                    <th>Turno</th>
+                    <th>Médico</th>
+                    <th>Atendidos turno</th>
+                    <th>Total médico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se cargan según los filtros -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="report-footer">
+        <button class="btn-primary" id="btnGenerarReporte">Generar Reporte</button>
+    </footer>
+
+</div>

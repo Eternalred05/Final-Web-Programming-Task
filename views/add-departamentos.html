@@ -1,0 +1,40 @@
+<div class="form-view">
+
+    <header class="form-header">
+        <h1>Añadir Departamento al Sistema</h1>
+        <button class="form-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <form class="form-body" id="formDepartamento">
+
+        <h2 class="form-title">Ingrese los Datos del Departamento</h2>
+
+        <div class="form-group">
+            <label for="depto-nombre">Nombre</label>
+            <input type="text" id="depto-nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="depto-identificador">Identificador</label>
+            <input type="text" id="depto-identificador" name="identificador" required>
+        </div>
+
+        <div class="form-group">
+            <label for="depto-hospital">
+                Seleccione el Hospital a Añadir el Departamento
+            </label>
+            <select id="depto-hospital" name="hospital" required>
+                <option value="">-- Seleccione un hospital --</option>
+                <option value="ale05">Alexandro Mod -- Ale05</option>
+                <option value="hmil">Hospital Militar</option>
+                <option value="cimex">CIMEX</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Añadir</button>
+        </div>
+
+    </form>
+
+</div>

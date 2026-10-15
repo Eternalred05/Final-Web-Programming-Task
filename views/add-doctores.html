@@ -1,0 +1,60 @@
+<div class="form-view form-view-sm">
+
+    <header class="form-header">
+        <h1>Añadir Doctor al Sistema</h1>
+        <button class="form-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <form class="form-body" id="formDoctor">
+
+        <h2 class="form-title">Ingrese los Datos del Doctor</h2>
+
+        <div class="form-group">
+            <label for="doc-nombre">Nombre</label>
+            <input type="text" id="doc-nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="doc-telefono">Teléfono</label>
+            <input type="tel" id="doc-telefono" name="telefono" required>
+        </div>
+
+        <div class="form-group">
+            <label for="doc-especialidad">Especialidad</label>
+            <input type="text" id="doc-especialidad" name="especialidad" required>
+        </div>
+
+        <div class="form-group">
+            <label for="doc-licencia">Número de Licencia</label>
+            <input type="text" id="doc-licencia" name="licencia" required>
+        </div>
+
+        <div class="form-group">
+            <label for="doc-identificador">Identificador</label>
+            <input type="text" id="doc-identificador" name="identificador" class="input-short" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="doc-unidad">Seleccione a que Unidad asignarle</label>
+                <select id="doc-unidad" name="unidad" required>
+                    <option value="">-- Seleccione --</option>
+                    <option value="miltuemer">Emergencias Militares -- MiltUEmer</option>
+                    <option value="primeros">Primeros Auxilios</option>
+                    <option value="uci">UCI</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="doc-experiencia">Años de Experiencia</label>
+                <input type="number" id="doc-experiencia" name="experiencia" class="input-tiny" value="0" min="0" required>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Añadir</button>
+        </div>
+
+    </form>
+
+</div>

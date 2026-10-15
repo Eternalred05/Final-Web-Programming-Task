@@ -1,0 +1,66 @@
+<div class="report-view">
+
+    <header class="report-header">
+        <h1>Listado de Doctores</h1>
+        <button class="report-close" aria-label="Cerrar">X</button>
+    </header>
+
+    <section class="report-filters report-filters-3">
+        <div class="filter">
+            <label for="filtro-hospital">Hospital</label>
+            <select id="filtro-hospital">
+                <option value="">-- Todos los hospitales --</option>
+                <option>Clínico de 26</option>
+                <option>Hospital Militar</option>
+                <option>CIMEX</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="filtro-departamento">Departamento</label>
+            <select id="filtro-departamento">
+                <option value=""></option>
+                <option>Dermatología</option>
+                <option>Emergencias Militares</option>
+                <option>Departamento de Oncología</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="filtro-unidad">Unidad</label>
+            <select id="filtro-unidad">
+                <option value=""></option>
+                <option>Infecciones en Piel</option>
+                <option>Primeros Auxilios</option>
+                <option>Unidad de Emergencia</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="report-table-wrapper">
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Hospital</th>
+                    <th>Departamento</th>
+                    <th>Unidad</th>
+                    <th>Nombre</th>
+                    <th>Especialidad</th>
+                    <th>Licencia</th>
+                    <th>Teléfono</th>
+                    <th>Experiencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se cargarán dinámicamente -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="report-footer report-footer-3">
+        <button class="btn-primary" id="btnEditar">Editar</button>
+        <button class="btn-primary" id="btnEliminar">Eliminar</button>
+        <button class="btn-primary" id="btnGenerarReporte">Generar Reporte</button>
+    </footer>
+
+</div>

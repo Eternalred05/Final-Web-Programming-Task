@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Hospital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Pantalla de login (se rellena desde script.js) -->
+    <div id="login-root"></div>
+
+    <!-- Aplicación (oculta hasta que haya sesión activa) -->
+    <div id="app-root" hidden>
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+                <span class="logo">Mi Hospital</span>
+                <button class="toggle-btn" id="toggleSidebar" aria-label="Contraer menú">
+                    Menú
+                </button>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Navegación principal">
+                <ul class="menu">
+
+                    <li class="menu-item">
+                        <a href="#" class="menu-link" data-screen="home">
+                            <span class="label">Inicio</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item has-submenu">
+                        <button class="menu-link" aria-expanded="false" aria-controls="submenu-add">
+                            <span class="label">Agregar</span>
+                            <span class="arrow">+</span>
+                        </button>
+                        <ul class="submenu" id="submenu-add">
+                            <li><a href="#" data-screen="add-hospitales">Hospitales</a></li>
+                            <li><a href="#" data-screen="add-departamentos">Departamentos</a></li>
+                            <li><a href="#" data-screen="add-unidades">Unidades</a></li>
+                            <li><a href="#" data-screen="add-doctores">Doctores</a></li>
+                            <li><a href="#" data-screen="add-pacientes">Pacientes</a></li>
+                            <li><a href="#" data-screen="add-turnos">Turnos</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item has-submenu">
+                        <button class="menu-link" aria-expanded="false" aria-controls="submenu-generate">
+                            <span class="label">Generar</span>
+                            <span class="arrow">+</span>
+                        </button>
+                        <ul class="submenu" id="submenu-generate">
+                            <li><a href="#" data-screen="gen-consulta">Consulta</a></li>
+                            <li><a href="#" data-screen="gen-informe">Informe</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item has-submenu">
+                        <button class="menu-link" aria-expanded="false" aria-controls="submenu-reports">
+                            <span class="label">Reportes</span>
+                            <span class="arrow">+</span>
+                        </button>
+                        <ul class="submenu" id="submenu-reports">
+                            <li class="submenu-title">Listados</li>
+                            <li><a href="#" data-screen="rep-pacientes">Listado de Pacientes</a></li>
+                            <li><a href="#" data-screen="rep-doctores">Listado de Doctores</a></li>
+                            <li><a href="#" data-screen="rep-informes">Listado de Informes</a></li>
+                            <li><a href="#" data-screen="rep-hospitales">Listado de Hospitales</a></li>
+                            <li><a href="#" data-screen="rep-departamentos">Listado de Departamentos</a></li>
+                            <li><a href="#" data-screen="rep-unidades">Listado de Unidades</a></li>
+                            <li><a href="#" data-screen="rep-turnos">Listado de Turnos</a></li>
+
+                            <li class="submenu-title">Resúmenes</li>
+                            <li><a href="#" data-screen="res-proceso">Resumen del Proceso</a></li>
+                            <li><a href="#" data-screen="res-consultas">Consultas Exitosas</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item has-submenu">
+                        <button class="menu-link" aria-expanded="false" aria-controls="submenu-extras">
+                            <span class="label">Info y Extras</span>
+                            <span class="arrow">+</span>
+                        </button>
+                        <ul class="submenu" id="submenu-extras">
+                            <li><a href="#" data-screen="acerca">Acerca de</a></li>
+                            <li><a href="#" data-screen="logout">Salir de la Sesión</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div id="app"></div>
+
+            <footer>
+                <p>&copy; 2026 Mi Hospital. Todos los derechos reservados.</p>
+            </footer>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
