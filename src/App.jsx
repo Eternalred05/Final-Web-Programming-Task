@@ -17,7 +17,6 @@ import UnidadFormPage from './pages/unidades/UnidadFormPage'
 import TurnosPage from './pages/turnos/TurnosPage'
 import TurnoFormPage from './pages/turnos/TurnoFormPage'
 import ConsultasPage from './pages/turnos/ConsultasPage'
-import ConsultaFormPage from './pages/turnos/ConsultaFormPage'
 import InformesPage from './pages/informes/InformesPage'
 import ResumenProcesoPage from './pages/reportes/ResumenProcesoPage'
 
@@ -43,7 +42,6 @@ function App() {
           <Route path="/turnos" element={<TurnosPage />} />
           <Route path="/turnos/nuevo" element={<TurnoFormPage />} />
           <Route path="/consultas" element={<ConsultasPage />} />
-          <Route path="/consultas/nueva" element={<ConsultaFormPage />} />
           <Route path="/informes" element={<InformesPage />} />
           <Route path="/resumen-proceso" element={<ResumenProcesoPage />} />
         </Route>
