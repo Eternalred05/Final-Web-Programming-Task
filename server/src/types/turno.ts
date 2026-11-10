@@ -1,7 +1,7 @@
 export interface Turno {
-  codunidad: string
+  codunidad: number
   numturno: number
   cantpacientes: number
   pacientesatend: number
-  codmedico: string
+  codmedico: number
 }

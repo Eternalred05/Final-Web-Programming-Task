@@ -1,5 +1,5 @@
 export interface Informe {
-  codunidad: string
+  codunidad: number
   numinforme: number
   fecha: string
   hora: string

@@ -9,16 +9,21 @@ import {
 } from '../services/turno.service'
 import { HttpError } from '../utils/httpError'
 
-const turnoSchema = z.object({
-  codunidad: z.string().trim().min(1, 'El codigo de la unidad es obligatorio'),
-  numturno: z.coerce.number().int().positive('El numero de turno debe ser valido'),
-  cantpacientes: z.coerce.number().int().nonnegative('La cantidad de pacientes debe ser valida'),
-  pacientesatend: z.coerce.number().int().nonnegative('La cantidad de pacientes atendidos debe ser valida'),
-  codmedico: z.string().trim().min(1, 'El codigo del medico es obligatorio'),
-})
+const turnoSchema = z
+  .object({
+    codunidad: z.coerce.number().int().positive('El codigo de la unidad es obligatorio'),
+    numturno: z.coerce.number().int().positive('El numero de turno debe ser valido'),
+    cantpacientes: z.coerce.number().int().nonnegative('La cantidad de pacientes debe ser valida'),
+    pacientesatend: z.coerce.number().int().nonnegative('La cantidad de pacientes atendidos debe ser valida'),
+    codmedico: z.coerce.number().int().positive('El codigo del medico es obligatorio'),
+  })
+  .refine((data) => data.pacientesatend <= data.cantpacientes, {
+    message: 'Los pacientes atendidos no pueden superar a los asignados',
+    path: ['pacientesatend'],
+  })
 
 const idSchema = z.object({
-  codunidad: z.string().trim().min(1, 'El codigo de la unidad es obligatorio'),
+  codunidad: z.coerce.number().int().positive('El codigo de la unidad es obligatorio'),
   numturno: z.coerce.number().int().positive('El numero de turno debe ser valido'),
 })
 
@@ -62,11 +67,17 @@ export async function createTurnoController(req: Request, res: Response): Promis
 
 export async function updateTurnoController(req: Request, res: Response): Promise<void> {
   const parsedParams = idSchema.safeParse(req.params)
-  const parsedBody = turnoSchema.pick({
-    cantpacientes: true,
-    pacientesatend: true,
-    codmedico: true,
-  }).safeParse(req.body)
+  const parsedBody = turnoSchema
+    .pick({
+      cantpacientes: true,
+      pacientesatend: true,
+      codmedico: true,
+    })
+    .refine((data) => data.pacientesatend <= data.cantpacientes, {
+      message: 'Los pacientes atendidos no pueden superar a los asignados',
+      path: ['pacientesatend'],
+    })
+    .safeParse(req.body)
 
   if (!parsedParams.success) {
     throw new HttpError(400, 'Datos invalidos', parsedParams.error.flatten().fieldErrors)

@@ -1,4 +1,4 @@
 export interface Hospital {
-  codhospital: string
+  codhospital: number
   nombrehosp: string
 }

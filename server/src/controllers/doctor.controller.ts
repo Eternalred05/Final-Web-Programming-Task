@@ -10,17 +10,16 @@ import {
 import { HttpError } from '../utils/httpError'
 
 const doctorSchema = z.object({
-  codmedico: z.string().trim().min(1, 'El codigo del medico es obligatorio'),
   nombremed: z.string().trim().min(1, 'El nombre del medico es obligatorio'),
-  telefono: z.string().trim().nullable().optional(),
+  telefono: z.string().trim().min(1, 'El telefono es obligatorio'),
   especialidad: z.string().trim().min(1, 'La especialidad es obligatoria'),
   numlicencia: z.string().trim().min(1, 'El numero de licencia es obligatorio'),
   experiencia: z.coerce.number().int().nonnegative('La experiencia debe ser valida'),
-  codunidad: z.string().trim().min(1, 'El codigo de la unidad es obligatorio'),
+  codunidad: z.coerce.number().int().positive('El codigo de la unidad es obligatorio'),
 })
 
 const idSchema = z.object({
-  codmedico: z.string().trim().min(1, 'El codigo del medico es obligatorio'),
+  codmedico: z.coerce.number().int().positive('El codigo del doctor debe ser un numero positivo'),
 })
 
 export async function getDoctors(_req: Request, res: Response): Promise<void> {
@@ -52,9 +51,8 @@ export async function createDoctorController(req: Request, res: Response): Promi
   }
 
   const doctor = await createDoctor(
-    parsed.data.codmedico,
     parsed.data.nombremed,
-    parsed.data.telefono ?? null,
+    parsed.data.telefono || null,
     parsed.data.especialidad,
     parsed.data.numlicencia,
     parsed.data.experiencia,
@@ -65,14 +63,16 @@ export async function createDoctorController(req: Request, res: Response): Promi
 
 export async function updateDoctorController(req: Request, res: Response): Promise<void> {
   const parsedParams = idSchema.safeParse(req.params)
-  const parsedBody = doctorSchema.pick({
-    nombremed: true,
-    telefono: true,
-    especialidad: true,
-    numlicencia: true,
-    experiencia: true,
-    codunidad: true,
-  }).safeParse(req.body)
+  const parsedBody = doctorSchema
+    .pick({
+      nombremed: true,
+      telefono: true,
+      especialidad: true,
+      numlicencia: true,
+      experiencia: true,
+      codunidad: true,
+    })
+    .safeParse(req.body)
 
   if (!parsedParams.success) {
     throw new HttpError(400, 'Datos invalidos', parsedParams.error.flatten().fieldErrors)
@@ -85,7 +85,7 @@ export async function updateDoctorController(req: Request, res: Response): Promi
   const doctor = await updateDoctor(
     parsedParams.data.codmedico,
     parsedBody.data.nombremed,
-    parsedBody.data.telefono ?? null,
+    parsedBody.data.telefono,
     parsedBody.data.especialidad,
     parsedBody.data.numlicencia,
     parsedBody.data.experiencia,

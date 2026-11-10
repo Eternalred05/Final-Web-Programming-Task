@@ -1,6 +1,6 @@
 export interface Unidad {
-  codunidad: string
+  codunidad: number
   nombreunidad: string
   ubicacion: string
-  coddpt: string
+  coddpt: number
 }

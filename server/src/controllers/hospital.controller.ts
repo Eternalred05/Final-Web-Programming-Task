@@ -10,12 +10,11 @@ import {
 import { HttpError } from '../utils/httpError'
 
 const hospitalSchema = z.object({
-  codhospital: z.string().trim().min(1, 'El codigo del hospital es obligatorio'),
   nombrehosp: z.string().trim().min(1, 'El nombre del hospital es obligatorio'),
 })
 
 const idSchema = z.object({
-  codhospital: z.string().trim().min(1, 'El codigo del hospital es obligatorio'),
+  codhospital: z.coerce.number().int().positive('El codigo es obligatorio'),
 })
 
 export async function getHospitals(_req: Request, res: Response): Promise<void> {
@@ -46,7 +45,7 @@ export async function createHospitalController(req: Request, res: Response): Pro
     throw new HttpError(400, 'Datos invalidos', parsed.error.flatten().fieldErrors)
   }
 
-  const hospital = await createHospital(parsed.data.codhospital, parsed.data.nombrehosp)
+  const hospital = await createHospital(parsed.data.nombrehosp)
   res.status(201).json(hospital)
 }
 

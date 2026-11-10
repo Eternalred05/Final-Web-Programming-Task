@@ -8,7 +8,7 @@ export async function getAllUnidades(): Promise<Unidad[]> {
   return rows
 }
 
-export async function getUnidadById(codunidad: string): Promise<Unidad | null> {
+export async function getUnidadById(codunidad: number): Promise<Unidad | null> {
   const { rows } = await query<Unidad>(
     'SELECT codunidad, nombreunidad, ubicacion, coddpt FROM unidad WHERE codunidad = $1',
     [codunidad],
@@ -16,15 +16,15 @@ export async function getUnidadById(codunidad: string): Promise<Unidad | null> {
   return rows[0] ?? null
 }
 
-export async function createUnidad(codunidad: string, nombreunidad: string, ubicacion: string, coddpt: string): Promise<Unidad> {
+export async function createUnidad(nombreunidad: string, ubicacion: string, coddpt: number): Promise<Unidad> {
   const { rows } = await query<Unidad>(
-    'INSERT INTO unidad (codunidad, nombreunidad, ubicacion, coddpt) VALUES ($1, $2, $3, $4) RETURNING codunidad, nombreunidad, ubicacion, coddpt',
-    [codunidad, nombreunidad, ubicacion, coddpt],
+    'INSERT INTO unidad (nombreunidad, ubicacion, coddpt) VALUES ($1, $2, $3) RETURNING codunidad, nombreunidad, ubicacion, coddpt',
+    [nombreunidad, ubicacion, coddpt],
   )
   return rows[0]
 }
 
-export async function updateUnidad(codunidad: string, nombreunidad: string, ubicacion: string, coddpt: string): Promise<Unidad | null> {
+export async function updateUnidad(codunidad: number, nombreunidad: string, ubicacion: string, coddpt: number): Promise<Unidad | null> {
   const { rows } = await query<Unidad>(
     'UPDATE unidad SET nombreunidad = $1, ubicacion = $2, coddpt = $3 WHERE codunidad = $4 RETURNING codunidad, nombreunidad, ubicacion, coddpt',
     [nombreunidad, ubicacion, coddpt, codunidad],
@@ -32,8 +32,8 @@ export async function updateUnidad(codunidad: string, nombreunidad: string, ubic
   return rows[0] ?? null
 }
 
-export async function deleteUnidad(codunidad: string): Promise<boolean> {
-  const { rows } = await query<{ codunidad: string }>(
+export async function deleteUnidad(codunidad: number): Promise<boolean> {
+  const { rows } = await query<{ codunidad: number }>(
     'DELETE FROM unidad WHERE codunidad = $1 RETURNING codunidad',
     [codunidad],
   )

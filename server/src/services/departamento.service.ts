@@ -8,7 +8,7 @@ export async function getAllDepartamentos(): Promise<Departamento[]> {
   return rows
 }
 
-export async function getDepartamentoById(coddpt: string): Promise<Departamento | null> {
+export async function getDepartamentoById(coddpt: number): Promise<Departamento | null> {
   const { rows } = await query<Departamento>(
     'SELECT coddpt, nombredpt, codhospital FROM departamento WHERE coddpt = $1',
     [coddpt],
@@ -16,15 +16,15 @@ export async function getDepartamentoById(coddpt: string): Promise<Departamento 
   return rows[0] ?? null
 }
 
-export async function createDepartamento(coddpt: string, nombredpt: string, codhospital: string): Promise<Departamento> {
+export async function createDepartamento(nombredpt: string, codhospital: number): Promise<Departamento> {
   const { rows } = await query<Departamento>(
-    'INSERT INTO departamento (coddpt, nombredpt, codhospital) VALUES ($1, $2, $3) RETURNING coddpt, nombredpt, codhospital',
-    [coddpt, nombredpt, codhospital],
+    'INSERT INTO departamento (nombredpt, codhospital) VALUES ($1, $2) RETURNING coddpt, nombredpt, codhospital',
+    [nombredpt, codhospital],
   )
   return rows[0]
 }
 
-export async function updateDepartamento(coddpt: string, nombredpt: string, codhospital: string): Promise<Departamento | null> {
+export async function updateDepartamento(coddpt: number, nombredpt: string, codhospital: number): Promise<Departamento | null> {
   const { rows } = await query<Departamento>(
     'UPDATE departamento SET nombredpt = $1, codhospital = $2 WHERE coddpt = $3 RETURNING coddpt, nombredpt, codhospital',
     [nombredpt, codhospital, coddpt],
@@ -32,8 +32,8 @@ export async function updateDepartamento(coddpt: string, nombredpt: string, codh
   return rows[0] ?? null
 }
 
-export async function deleteDepartamento(coddpt: string): Promise<boolean> {
-  const { rows } = await query<{ coddpt: string }>(
+export async function deleteDepartamento(coddpt: number): Promise<boolean> {
+  const { rows } = await query<{ coddpt: number }>(
     'DELETE FROM departamento WHERE coddpt = $1 RETURNING coddpt',
     [coddpt],
   )

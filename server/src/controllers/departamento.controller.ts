@@ -10,13 +10,12 @@ import {
 import { HttpError } from '../utils/httpError'
 
 const departamentoSchema = z.object({
-  coddpt: z.string().trim().min(1, 'El codigo del departamento es obligatorio'),
   nombredpt: z.string().trim().min(1, 'El nombre del departamento es obligatorio'),
-  codhospital: z.string().trim().min(1, 'El codigo del hospital es obligatorio'),
+  codhospital: z.coerce.number().int().positive('El codigo del hospital es obligatorio'),
 })
 
 const idSchema = z.object({
-  coddpt: z.string().trim().min(1, 'El codigo del departamento es obligatorio'),
+  coddpt: z.coerce.number().int().positive('El codigo del departamento debe ser un numero positivo'),
 })
 
 export async function getDepartamentos(_req: Request, res: Response): Promise<void> {
@@ -47,7 +46,7 @@ export async function createDepartamentoController(req: Request, res: Response):
     throw new HttpError(400, 'Datos invalidos', parsed.error.flatten().fieldErrors)
   }
 
-  const departamento = await createDepartamento(parsed.data.coddpt, parsed.data.nombredpt, parsed.data.codhospital)
+  const departamento = await createDepartamento(parsed.data.nombredpt, parsed.data.codhospital)
   res.status(201).json(departamento)
 }
 

@@ -1,5 +1,5 @@
 export interface Paciente {
-  codunidad: string
+  codunidad: number
   numhistclinica: string
   nombrepac: string
   direccion: string

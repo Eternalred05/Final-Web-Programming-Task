@@ -8,7 +8,7 @@ export async function getAllDoctors(): Promise<Doctor[]> {
   return rows
 }
 
-export async function getDoctorById(codmedico: string): Promise<Doctor | null> {
+export async function getDoctorById(codmedico: number): Promise<Doctor | null> {
   const { rows } = await query<Doctor>(
     'SELECT codmedico, nombremed, telefono, especialidad, numlicencia, experiencia, codunidad FROM doctor WHERE codmedico = $1',
     [codmedico],
@@ -17,29 +17,28 @@ export async function getDoctorById(codmedico: string): Promise<Doctor | null> {
 }
 
 export async function createDoctor(
-  codmedico: string,
   nombremed: string,
   telefono: string | null,
   especialidad: string,
   numlicencia: string,
   experiencia: number,
-  codunidad: string,
+  codunidad: number,
 ): Promise<Doctor> {
   const { rows } = await query<Doctor>(
-    'INSERT INTO doctor (codmedico, nombremed, telefono, especialidad, numlicencia, experiencia, codunidad) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING codmedico, nombremed, telefono, especialidad, numlicencia, experiencia, codunidad',
-    [codmedico, nombremed, telefono, especialidad, numlicencia, experiencia, codunidad],
+    'INSERT INTO doctor (nombremed, telefono, especialidad, numlicencia, experiencia, codunidad) VALUES ($1, $2, $3, $4, $5, $6) RETURNING codmedico, nombremed, telefono, especialidad, numlicencia, experiencia, codunidad',
+    [nombremed, telefono, especialidad, numlicencia, experiencia, codunidad],
   )
   return rows[0]
 }
 
 export async function updateDoctor(
-  codmedico: string,
+  codmedico: number,
   nombremed: string,
-  telefono: string | null,
+  telefono: string,
   especialidad: string,
   numlicencia: string,
   experiencia: number,
-  codunidad: string,
+  codunidad: number,
 ): Promise<Doctor | null> {
   const { rows } = await query<Doctor>(
     'UPDATE doctor SET nombremed = $1, telefono = $2, especialidad = $3, numlicencia = $4, experiencia = $5, codunidad = $6 WHERE codmedico = $7 RETURNING codmedico, nombremed, telefono, especialidad, numlicencia, experiencia, codunidad',
@@ -48,8 +47,8 @@ export async function updateDoctor(
   return rows[0] ?? null
 }
 
-export async function deleteDoctor(codmedico: string): Promise<boolean> {
-  const { rows } = await query<{ codmedico: string }>(
+export async function deleteDoctor(codmedico: number): Promise<boolean> {
+  const { rows } = await query<{ codmedico: number }>(
     'DELETE FROM doctor WHERE codmedico = $1 RETURNING codmedico',
     [codmedico],
   )

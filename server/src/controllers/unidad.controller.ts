@@ -10,14 +10,13 @@ import {
 import { HttpError } from '../utils/httpError'
 
 const unidadSchema = z.object({
-  codunidad: z.string().trim().min(1, 'El codigo de la unidad es obligatorio'),
   nombreunidad: z.string().trim().min(1, 'El nombre de la unidad es obligatorio'),
   ubicacion: z.string().trim().min(1, 'La ubicacion es obligatoria'),
-  coddpt: z.string().trim().min(1, 'El codigo del departamento es obligatorio'),
+  coddpt: z.coerce.number().int().positive('El codigo del departamento es obligatorio'),
 })
 
 const idSchema = z.object({
-  codunidad: z.string().trim().min(1, 'El codigo de la unidad es obligatorio'),
+  codunidad: z.coerce.number().int().positive('El codigo de la unidad debe ser un numero positivo'),
 })
 
 export async function getUnidades(_req: Request, res: Response): Promise<void> {
@@ -48,7 +47,7 @@ export async function createUnidadController(req: Request, res: Response): Promi
     throw new HttpError(400, 'Datos invalidos', parsed.error.flatten().fieldErrors)
   }
 
-  const unidad = await createUnidad(parsed.data.codunidad, parsed.data.nombreunidad, parsed.data.ubicacion, parsed.data.coddpt)
+  const unidad = await createUnidad(parsed.data.nombreunidad, parsed.data.ubicacion, parsed.data.coddpt)
   res.status(201).json(unidad)
 }
 

@@ -1,13 +1,20 @@
 import { Router } from 'express'
 import {
-  createPacienteController,
-  deletePacienteController,
-  getPaciente,
   getPacientes,
+  getPaciente,
+  createPacienteController,
   updatePacienteController,
+  deletePacienteController,
+  getPacientesNoAtendidos,
+  atenderPacienteController,
+  agregarCausaController,
 } from '../controllers/paciente.controller'
 
 export const pacienteRouter = Router()
+
+pacienteRouter.get('/no-atendidos/:codunidad', getPacientesNoAtendidos)
+pacienteRouter.post('/atender', atenderPacienteController)
+pacienteRouter.post('/causa', agregarCausaController)
 
 pacienteRouter.get('/', getPacientes)
 pacienteRouter.get('/:codunidad/:numhistclinica', getPaciente)
